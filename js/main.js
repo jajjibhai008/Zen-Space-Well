@@ -159,27 +159,8 @@ async function evaluatePerformanceHints(){
 export function setLowMotion(enable=true){ if(enable){ document.documentElement.classList.add('low-motion'); localStorage.setItem('zen_low_motion','1'); } else { document.documentElement.classList.remove('low-motion'); localStorage.setItem('zen_low_motion','0'); } // reflect button state
     const btn = document.getElementById('motionToggle'); if(btn) btn.setAttribute('aria-pressed', String(enable)); }
 
-// add UI wiring for the toggle (initialize state and label, then wire click)
-const motionBtn = document.getElementById('motionToggle');
-if(motionBtn){
-    // determine initial state: localStorage > document class
-    const stored = localStorage.getItem('zen_low_motion');
-    const enabled = stored === '1' || (stored === null && document.documentElement.classList.contains('low-motion'));
-    // reflect state on document and button
-    if(enabled) document.documentElement.classList.add('low-motion'); else document.documentElement.classList.remove('low-motion');
-    motionBtn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    motionBtn.textContent = enabled ? 'Low Motion: On' : 'Low Motion: Off';
-
-    motionBtn.addEventListener('click', ()=>{
-        const pressed = motionBtn.getAttribute('aria-pressed') === 'true';
-        const next = !pressed;
-        setLowMotion(next);
-        motionBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
-        motionBtn.textContent = next ? 'Low Motion: On' : 'Low Motion: Off';
-    });
-}
+// add UI wiring for the toggle
+const motionBtn = document.getElementById('motionToggle'); if(motionBtn){ motionBtn.addEventListener('click', ()=>{ const pressed = motionBtn.getAttribute('aria-pressed') === 'true'; setLowMotion(!pressed); }); }
 
 // run detection early
 evaluatePerformanceHints();
-// ensure the visuals update after detection
-requestAnimationFrame(()=>{ if(typeof updateVisuals === 'function') updateVisuals(); });
