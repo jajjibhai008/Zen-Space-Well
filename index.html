@@ -92,6 +92,8 @@
                 <div class="nav-links" role="menubar">
                     <a href="#apps" role="menuitem">Apps</a>
                 </div>
+                <!-- Low-motion toggle (user control for performance/animation) -->
+                <button id="motionToggle" class="motion-toggle" aria-pressed="false" title="Toggle reduced motion">Low Motion</button>
             </div>
         </nav>
     </header>
@@ -215,6 +217,6 @@
     <div class="modal-overlay" id="breathingModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="breathingTitle"><div class="modal-header"><h3 id="breathingTitle">Zen Breathing Session</h3><button class="close-btn" data-close-modal>&times;</button></div><div class="modal-content"><div class="breathing-wrapper"><div class="breathing-orb" id="breathingOrb"><div class="breathing-phase" id="breathingPhase">Ready</div></div><div class="breathing-controls" id="patternControls"><div class="chip active" data-pattern="4-7-8">4-7-8</div><div class="chip" data-pattern="5-5">Coherent 5-5</div><div class="chip" data-pattern="4-4-6-2">4-4-6-2</div></div><div class="cycle-stat"><div>Cycle: <span id="cycleCount">0</span></div><div>Pattern: <span id="patternName">4-7-8</span></div><div>Elapsed: <span id="elapsedTime">0s</span></div></div><div style="display:flex; gap:.9rem; flex-wrap:wrap; justify-content:center; margin-top:.4rem;"><button class="primary-btn" id="startBreathing">Start</button><button class="secondary-btn" id="pauseBreathing" disabled>Pause</button><button class="secondary-btn" id="resetBreathing" disabled>Reset</button></div><p class="breathing-guide">Follow the orb: it expands as you inhale, holds gently, then contracts on the exhale. Extended exhalation engages the vagus nerve, signaling safety & reducing sympathetic arousal.</p></div></div></div></div>
     <!-- Mandala App Modal -->
     <div class="modal-overlay" id="mandalaModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mandalaTitle"><div class="modal-header"><h3 id="mandalaTitle">Zen Mandala Creator</h3><button class="close-btn" data-close-modal>&times;</button></div><div class="modal-content"><div class="mandala-wrapper"><div class="canvas-container"><canvas id="mandalaCanvas"></canvas></div><div class="tool-row"><select id="symmetry" class="symmetry-select"><option value="4">4-Fold</option><option value="6" selected>6-Fold</option><option value="8">8-Fold</option><option value="12">12-Fold</option></select><label>Brush <input type="range" id="brushSize" min="1" max="40" value="6"></label><div class="color-palette" id="palette"></div></div><div class="toolbar-actions"><button class="secondary-btn" id="undoBtn">Undo</button><button class="secondary-btn" id="clearBtn">Clear</button><button class="secondary-btn" id="saveBtn">Save</button><button class="secondary-btn" id="bgToggle">Dark BG</button></div><p class="mandala-guide">Draw anywhere – strokes replicate symmetrically. This repetitive bilateral engagement fosters a flow state, reducing rumination & muscular tension.</p></div></div></div></div>
-    <script src="app.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
